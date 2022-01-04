@@ -17,11 +17,13 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Player>(out Player player))
-            Die();
+            player.ApplyDamage(_damage);
+
+        Die();
     }
 
     private void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
